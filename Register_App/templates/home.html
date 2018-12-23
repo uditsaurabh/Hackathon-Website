@@ -1,0 +1,164 @@
+{% extends "Base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hackoverflow |CIS 2.0</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <!-- Plugin CSS -->
+
+
+    <!-- Custom styles for this template -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
+	  {%  endblock %}
+
+
+
+{% block content %}
+	<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#hardware">Description</a>
+             </li>
+
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#software">Motivation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#prizes">Prizes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'participants' %}">Participants</a>
+            </li>
+{% endblock %}
+<!--{#  <body id="page-top">#}-->
+ <!--{% url 'participants' %}-->
+
+{% block content2 %}
+
+    <header class="masthead text-center d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <strong>CIS HACKATHON</strong>
+            </h1>
+            <hr class="my-4">
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="mb-5" id="main-tag">Let your creativity fuel the innovation in technology!</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#hardware">Find Out More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-primary" id="hardware">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading white-text mb-4"></h2>
+            <p class="white-text mb-4">Ever dreamed of building your own  <strong>home alarm system</strong> or your own <strong>bass heavy speakers</strong> ? Thanks to breakthroughs like Arduino boards and Raspberry Pi, you can now build just about anything you imagine. </p>
+
+            <p class="white-text mb-4"> CIS brings to you the <strong>biggest  Hackathon</strong>. Build all that you want to, <strong>show us what you can do</strong> and we’ll show it to the world. All you need to do is come equipped with your team and you get the opportunity to create something visionary. </p>
+
+            <!-- <p class="white-text mb-4">Come up with your ideas from <strong>8th to 11th March </strong> and the actual building process will start from <strong>17th March (to 18th March)</strong>. Compete and build the best devices to win <strong>tons of great prizes!</strong></p> -->
+
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#">Get Started!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="software">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading black-text mb-3">Description</h2>
+            <hr class="my-4">
+            <p class="black-text mb-4">Amidst the digital age, we have an app or website at our disposal for most of the services we desire but wouldn't it be great if you could create an app on your own to solve your personal problems? </p>
+
+            <p class="black-text mb-4">If you have the drive to build and the creativity to innovate, then look no further. This <strong>Aavishkar</strong>, GLUG brings you the oppurtunity to make apps for some major issues like <strong>safety of women , smart traffic control and parking, cryptocurrency, smart governance</strong> or something for your own like a <strong>personally customised music or movie player</strong>. </p>
+
+            <p class="black-text mb-4">Show your passion and innovation and win awesome prizes </p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#">Get Started!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-primary" id="prizes">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading white-text">Prizes</h2>
+            <hr class="light my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <div class="prize-box mt-5 mx-auto">
+              <i class="fab fa-4x fa-bitcoin white-text mb-3 sr-icon-1"></i>
+              <h3 class="mb-3 white-text">Stickers</h3>
+              <p class="muted-text mb-0">Get cool Stickers for your laptops!</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="prize-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-dollar-sign white-text mb-3 sr-icon-2"></i>
+              <h3 class="mb-3 white-text">Prize Money</h3>
+              <p class="muted-text mb-0">A grand prize money awaits you!</p>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="prize-box mt-5 mx-auto">
+              <i class="fas fa-4x fa-award white-text mb-3 sr-icon-3"></i>
+              <h3 class="mb-3 white-text">Perks</h3>
+              <p class="muted-text mb-0">Worthwhile perks are also up for grabs!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Have a doubt? Get In Touch!</h2>
+            <hr class="my-4">
+            <p class="mb-5">True wisdom lies in asking the right questions. It is not the answer that enlightens, but a prudent question.</p>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-3 col-sm-4 text-center ml-auto mb-4">
+          <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+          <p class="mb-1">XYZ kumar</p>
+          <p class="mb-1">+91 96748 25450</p>
+        </div>
+          <div class="col-md-3 col-sm-4 text-center mb-4">
+            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+            <p class="mb-1">XYZ kumar</p>
+            <p class="mb-1">+91 98045 17793</p>
+          </div>
+          <div class="col-md-3 col-sm-4 text-center mr-auto mb-4">
+            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+            <p class="mb-1">XYZ kumar</p>
+            <p class="mb-1">+91 86970 05450</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<style>
+.content {
+    max-width: 500px;
+    margin: auto;
+
+}
+#logged_user_greetings{
+	padding-right: 0px;
+	padding-left: 0px;
+	border-bottom-style: dotted;
+	margin-left: 750px;
+	text-align: right;
+}
+</style>
+
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+
+  <form class="form-inline" method="post">
+	  {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Insert team name" name="TeamName" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+	  <span id="logged_user_greetings">hi</span>
+	  <form class="form-inline" method="get" action={% url 'juryLogout' %}>
+	  {% csrf_token %}
+		  <button id="" class="btn btn-outline-success" type="Submit">Logout</button>
+	  </form>
+
+
+</nav>
+
+
+
+  <!---jury display-->
+
+{% if display %}
+<div class="content">
+	<div class="imagebg"></div>
+	<div class="row " style="margin-top: 50px">
+        <div class="col-md-6 col-md-offset-3 form-container">
+        <h2>Evaluation</h2>
+        <p>
+            Please provide score for {{ team.title }}:
+        </p>
+
+                        <div class="row">
+                <div class="col-sm-12 form-group">
+                    <label for="comments">
+                        Usecase Description of team {{ team.title }}:</label>
+                    <textarea  style="width:200%" class="form-control" type="textarea" name="comments" id="comments" placeholder="{{team.usecase}}" maxlength="6000" rows="7"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label>Score:</label>
+                    <input value="{{team.rating }}" type="text" class="form-control" id="score" name="score" required>
+                </div>
+	            <div>
+		            <input value="{{ team.title }}" id="teamname" hidden>
+	            </div>
+
+            </div>
+
+                        <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button id="rank" class="btn btn-lg btn-success btn-block" >Post Score </button>
+                </div>
+            </div>
+
+
+        <div id="success_message" style="width:100%; height:100%; display:none; ">
+            <h3>Posted your feedback successfully!</h3>
+        </div>
+        <div id="error_message"
+                style="width:100%; height:100%; display:none; ">
+                    <h3>Error</h3>
+                    Sorry there was an error sending your form.
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endif %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $("#rank").click(function(){
+        console.log(("#score").innerHTML)
+	console.log($("#title").innerText)
+    $.ajax(
+    {
+        type:"POST",
+        url: "/jurydataUpdate",
+        data:{
+                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+				 teamrating:$("#score").val(),
+	             teamname:$("#teamname").val(),
+
+
+        },
+
+     })
+});
+</script>
+</body>
+</html>

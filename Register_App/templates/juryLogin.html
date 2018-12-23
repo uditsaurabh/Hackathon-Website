@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+
+<!-- Custom styles for this template -->
+      <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+
+</head>
+<body>
+
+  <span href="#" class="button" id="toggle-login">Jury Login</span>
+
+<div id="login">
+  <div id="triangle"></div>
+  <h1>Log in</h1>
+  <form method="post">
+  {% csrf_token %}
+	  {% if error %}
+	  <div class="alert alert-success">
+		  <strong>Invalid Credentials !!</strong>{{ error }}.
+	</div>
+	  {% endif %}
+    <input id="username_1" type="text" name="username" placeholder="Login" />
+    <input id="password_1"type="password" name="password"placeholder="Password" required/>
+    <input type="submit" value="Log in" />
+  </form>
+</div>
+</body>
+</html>

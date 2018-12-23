@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+	  <!--
+      <script type='text/javascript'>
+         function addFields(){
+            // Number of inputs to create
+            var number = document.getElementById("member").value;
+            // Container <div> where dynamic content will be placed
+            var container = document.getElementById("container");
+            // Clear previous contents of the container
+            while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+            for (i=0;i<number;i++){
+                // Append a node with a random text
+                container.appendChild(document.createTextNode("Member " + (i+1)));
+                // Create an <input> element, set its type and name attributes
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "member" + i;
+                container.appendChild(input);
+                // Append a line break
+                container.appendChild(document.createElement("br"));
+            }
+        }
+          </script>
+-->
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+
+	      <!--<link rel="stylesheet" href="{% static 'qfc-dark.css' %}">-->
+	    <link rel="stylesheet" href="../static/qfc-dark.css">
+	    </head>
+
+
+     <body>
+          <div class="qfc-container">
+	        <form method="post">
+		        {% csrf_token %}
+              <h2>Registration </h2>
+                 <label>Welcome to Hackathon Registration page</label>
+
+					<div>
+                       <div>
+                          <input name="TeamName" placeholder="TeamName" type="text" required>
+                       </div>
+
+						<div>
+
+							<select name="Theme" >
+                                <option disabled selected value="--">select your theme</option>
+                                <option value="Prevention">Prevention</option>
+                                <option value="Detection">Detection</option>
+                                <option value="Resolution">Resolution</option>
+								<option value="UserInterface">UserInterface</option>
+								<option value="Commercial">Commercial</option>
+								<option value="DeliveryModel">DeliveryModel</option>
+                            </select>
+
+						</div>
+							<div>
+                        <input name="EmailAddress" placeholder="Team Lead Email Address" type="email" required>
+                        </div>
+						<div>
+		                    <input name="EmailAddress1" placeholder="Member1 Email Address" type="email">
+                        </div>
+	                    <div>
+		                    <input name="EmailAddress2" placeholder="Member2 Email Address" type="email">
+                        </div>
+						<div>
+                        <div>
+		                    <input required name="ideatitile" placeholder="One Line description of your Idea" type="text" required>
+                        </div>
+                        </div>
+                        <div>
+                        <textarea required name="ideadetail" placeholder="Idea Detail(Weight 20 marks)"></textarea>
+                        </div>
+						<div>
+							<textarea required name="HighLevelDesign" placeholder="High Level Design(Weight 50 marks)"></textarea>
+						</div>
+
+	                    <div>
+		                    <textarea required name="detaileddesign" placeholder="Detailed Design/Prototype(Weight 20 marks)"></textarea>
+                        </div>
+
+
+						<div>
+		                    <textarea required name="solutionplatform" placeholder="Solution Platform"></textarea>
+                        </div>
+						  <div>
+		                    <input required name="usdcosttoimplement" placeholder="USD($) Cost to implement" type="input" required>
+                        </div>
+						<div>
+		                    <input required name="usdbenefits" placeholder="USD($)benefits this product can earn" type="input" required>
+                        </div>
+						 <div>
+		                    <textarea required name="benefits" placeholder="Benefits estimated(Be more mathematical in your description) "></textarea>
+                        </div>
+						<div>
+		                    <textarea required name="ideaImplementedAnywhere" placeholder="Is this idea already implemented anywhere"></textarea>
+                        </div>
+
+                        <div>
+                        <button type="submit">Submit</button>
+	                    <button type="input">Cancel</button>
+                        </div>
+                </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

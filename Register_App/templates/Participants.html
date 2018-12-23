@@ -1,0 +1,162 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'participants.css' %}">
+
+<style>
+
+
+
+.hover_bkgr_fricc{
+    background:rgba(0,0,0,.4);
+    cursor:pointer;
+    display:none;
+    height:100%;
+    position:fixed;
+    text-align:center;
+    top:0;
+    width:100%;
+    z-index:10000;
+}
+.hover_bkgr_fricc .helper{
+    display:inline-block;
+    height:100%;
+    vertical-align:middle;
+}
+.hover_bkgr_fricc > div {
+    background-color: #fff;
+    box-shadow: 10px 10px 60px #555;
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 500px;
+    vertical-align: middle;
+    width: 60%;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+}
+.popupCloseButton {
+    background-color: #fff;
+    border: 3px solid #999;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.popupCloseButton:hover {
+    background-color: #ccc;
+}
+.trigger_popup_fricc {
+    cursor: pointer;
+    font-size: 20px;
+    margin: 20px;
+    display: inline-block;
+    font-weight: bold;
+}
+#table{
+	margin-top: 50px;
+}
+
+
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+	<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{% url 'home' %}">Home</a>
+            </li>
+{% endblock %}
+{% block content2 %}
+<table id ="table"class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">PrimaryTeamMember</th>
+      <th scope="col">TeamMember1</th>
+	  <th scope="col">TeamMember2</th>
+	  <th scope="col">IdeaDescription</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for t in team %}
+    <tr>
+      <th scope="row">{{ t.id }}</th>
+      <td>
+		<a class="trigger_popup_fricc {{t.id}}" >{{ t.teamName }}</a>
+		<div class="hover_bkgr_fricc" id="{{ t.id }}" >
+            <span class="helper"></span>
+            <div>
+
+
+                <div class="popupCloseButton">X</div>
+                    <p>
+	                    TeamName:{{ t.teamName }} </br>
+	                    UseCase:{{ t.usecase }} </br>
+	                    TeamCreatedOn:{{t.creation }} </br>
+	                    Score:{{ t.score }} </br>
+	                    ProjectTitle:{{ t.title_desc }} </br>
+	                    ideaDeatils:{{ t.idea_detail }} </br>
+	                    High_Level_design:{{ t.High_Level_Design }} </br>
+	                    DetailedDesign:{{ t.detailed_design }} </br>
+	                    SolutionPlatform:{{ t.solution_platform }} </br>
+	                    CostToImplement:{{ t.usd_Cost_To_Implement }} </br>
+						BenefitsPerAnnum:{{ t.usd_benefits_perannum }} </br>
+	                    BemefitModel:{{ t.benefits }} </br>
+
+                    </p>
+            </div>
+		</div>
+      </td>
+
+        <td>{{t.participants_set.all.0}}</td>
+
+	  <td>{{t.participants_set.all.1}}</td>
+	  <td>{{t.participants_set.all.2}}</td>
+	    <td>{{ t.title_desc }}</td>
+    </tr>
+	{% endfor %}
+  </tbody>
+</table>
+<script src = "https://code.jquery.com/jquery-1.4.1.min.js"></script>
+<script>
+$(window).load(function () {
+    console.log("Function loaded")
+    $(".trigger_popup_fricc").click(function(event){
+        console.log("event trigreend")
+	    arr=event.target.className.split(" ")
+	    var id=(arr.length-1)
+	    id=arr[id]
+	    console.log($('#'+id))
+        $('#'+id).show();
+    });
+    $('.hover_bkgr_fricc').click(function(event){
+         arr=event.target.className.split(" ")
+	    const id=arr.length-1
+	    x='.hover_bkgr_fricc ' +id
+	    console.log(x)
+        $(x).hide();
+    });
+    $('.popupCloseButton ').click(function(){
+        $('.hover_bkgr_fricc' ).hide();
+    });
+});
+
+</script>
+
+{% endblock %}
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ParticipantsRest</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<table id ="table"class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">PrimaryTeamMember</th>
+      <th scope="col">TeamMember1</th>
+	  <th scope="col">TeamMember2</th>
+	  <th scope="col">IdeaDescription</th>
+    </tr>
+  </thead>
+</table>
+<div></div>
+<script src = "https://code.jquery.com/jquery-1.4.1.min.js"></script>
+<script>
+$.ajax({
+
+
+    url: "http://127.0.0.1:8000/participants/rest",
+    type: 'GET',
+    success: function(res) {
+        console.log(res);
+        if ($.isArray(res)){
+        $.each(res,function(index,t) {
+
+                $("div").append(`<tr><th scope="row">${t.id }</th> <td><a class="trigger_popup_fricc ${t.id}" >${t.teamName}</a></td><tr>`)
+	            $("div").append("<tr><br>")
+            }
+        )
+        }
+
+    }
+});
+</script>
+</body>
+</html>
